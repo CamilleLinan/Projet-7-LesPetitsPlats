@@ -1,13 +1,18 @@
 @import 'fonts';
 @import 'variables';
 @import 'Header';
+@import 'Recipes';
 
 // PAGE \\
 body {
     font-family: 'Manrope', sans-serif;
     margin: 0;
     
-    & h1 {
+    & h1, h2 {
         font-family: 'Anton', sans-serif;
     }
+}
+
+li {
+    list-style-type: none;
 }
