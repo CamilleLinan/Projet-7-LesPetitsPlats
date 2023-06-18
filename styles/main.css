@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;700&display=swap");
 .header {
   position: relative;
   background-image: url("../../assets/banner.png");
@@ -68,12 +68,84 @@
   color: black;
 }
 
+.recipes-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #EDEDED;
+  padding: 1em;
+}
+
+.recipe {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+  min-width: 350px;
+  margin: 1em;
+  border-radius: 1em;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(49, 49, 49, 0.2);
+  overflow: hidden;
+}
+.recipe-cover {
+  object-fit: cover;
+  height: 280px;
+  border-radius: 1em 1em 0 0;
+}
+.recipe-time {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: #FFD15B;
+  padding: 0.3em 0.8em;
+  border-radius: 0.6em;
+}
+.recipe-container {
+  padding: 2em 2em 0 2em;
+}
+.recipe-title {
+  margin: 0;
+}
+.recipe-subtitle {
+  font-size: 12px;
+  color: grey;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.recipe-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font-size: 14px;
+}
+.recipe-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  font-size: 14px;
+}
+.recipe-ingredients-item {
+  width: 50%;
+  margin-bottom: 1em;
+}
+.recipe-ingredients-qty {
+  color: grey;
+}
+
 body {
   font-family: "Manrope", sans-serif;
   margin: 0;
 }
-body h1 {
+body h1, body h2 {
   font-family: "Anton", sans-serif;
+}
+
+li {
+  list-style-type: none;
 }
 
 /*# sourceMappingURL=main.css.map */
