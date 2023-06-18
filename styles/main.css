@@ -68,12 +68,30 @@
   color: black;
 }
 
+.sort-bar-container {
+  display: flex;
+}
+.sort-bar-button {
+  margin: 0 1em 2em 1em;
+  border: none;
+  background: white;
+  padding: 1.5em 1em;
+  border-radius: 1em;
+  width: 190px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+.sort-bar-button i {
+  color: grey;
+  font-size: 16px;
+}
+
 .recipes-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  background-color: #EDEDED;
-  padding: 1em;
+  justify-content: space-between;
 }
 
 .recipe {
@@ -144,8 +162,17 @@ body h1, body h2 {
   font-family: "Anton", sans-serif;
 }
 
+main {
+  background-color: #EDEDED;
+  padding: 2em;
+}
+
 li {
   list-style-type: none;
+}
+
+button, a {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

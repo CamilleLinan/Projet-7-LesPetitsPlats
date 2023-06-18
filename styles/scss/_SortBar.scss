@@ -1,0 +1,22 @@
+.sort-bar {
+    &-container {
+        display: flex;
+    }
+    
+    &-button {
+        margin: 0 1em 2em 1em;
+        border: none;
+        background: white;
+        padding: 1.5em 1em;
+        border-radius: 1em;
+        width: 190px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+        & i {
+            color: $secondary-clr;
+            font-size: 16px;
+        }
+    }
+}
