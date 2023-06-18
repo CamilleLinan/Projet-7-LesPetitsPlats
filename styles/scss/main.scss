@@ -1,0 +1,13 @@
+@import 'fonts';
+@import 'variables';
+@import 'Header';
+
+// PAGE \\
+body {
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+    
+    & h1 {
+        font-family: 'Anton', sans-serif;
+    }
+}

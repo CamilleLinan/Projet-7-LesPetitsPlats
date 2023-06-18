@@ -2,15 +2,34 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <!-- <link rel="icon" type="image/png" href="assets/favicon.png"> -->
-    <!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=DM+Sans&amp;display=swap" rel="stylesheet"> -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/427a8b27ad.js" crossorigin="anonymous"></script>
     
     <title>Les Petits Plats</title>
   </head>
   
   <body>
-
+    <header class="header">
+        <img src="assets/logo.png" alt="Les petits plats - logo" class="header-logo">
+        <div class="header-container">
+            <h1 class="header-title">
+                CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
+            </h1>
+            <div class="header-search-input">
+                <label for="search" class="header-label"></label>
+                <input 
+                    type="text" 
+                    id="search" 
+                    name="search"
+                    class="header-input"
+                    placeholder="Rechercher une recette, un ingrédient..."
+                >
+                <span class="header-input-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+            </div>
+        </div>
+    </header>
   </body>
 </html>
