@@ -1,7 +1,7 @@
 import { recipes } from './recipes.js';
 
 const displayRecipes = () => {
-    createRecipes(recipes);
+    createRecipesCard(recipes);
 }
 
 const onInit = () => {

@@ -1,4 +1,4 @@
-const createRecipes = (recipes) => {
+const createRecipesCard = (recipes) => {
     const recipesContainer = document.querySelector('.recipes-section');
 
     recipes.forEach((recipe) => {
