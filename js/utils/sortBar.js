@@ -1,12 +1,26 @@
 import { recipes } from '../recipes.js';
 
 const recipesContainer = document.querySelector('.recipes-section');
+const clearBtn = document.querySelector('.header-input-clear-icon');
 const searchBar = document.getElementById('search');
+
 searchBar.addEventListener('input', (event) => {
-    const searchValue = event.target.value.toLowerCase();
-    setTimeout(() => {
-      handleSearch(searchValue);
-    }, 1500);
+  clearBtn.style.display = 'block';
+  const searchValue = event.target.value.toLowerCase();
+
+  setTimeout(() => {
+    handleSearch(searchValue);
+  }, 1000);
+
+  if (searchValue === '') {
+    clearBtn.style.display = 'none';
+  }
+});
+
+clearBtn.addEventListener('click', () => {
+  searchBar.value = '';
+  clearBtn.style.display = 'none';
+  displayRecipesCards(recipes);
 });
 
 const handleSearch = (searchValue) => {

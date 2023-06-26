@@ -47,6 +47,21 @@
 .header-input:focus {
   outline-color: #e4b02d;
 }
+.header-input-clear-icon {
+  display: none;
+  position: absolute;
+  top: 2.5em;
+  right: 2.5em;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  color: black;
+  opacity: 0.5;
+  transition: all 250ms ease-in-out;
+}
+.header-input-clear-icon:hover {
+  opacity: 1;
+}
 .header-input-icon {
   position: absolute;
   top: 1.75em;
