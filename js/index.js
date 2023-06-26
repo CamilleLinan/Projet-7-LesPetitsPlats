@@ -1,11 +1,11 @@
 import { recipes } from './recipes.js';
 
 const displaySortBar = () => {
-    createSortBar(recipes);
+    createSortBarByTag(recipes);
 }
 
 const displayRecipes = () => {
-    createRecipesCard(recipes);
+    displayRecipesCards(recipes);
 }
 
 const onInit = () => {

@@ -22,6 +22,8 @@
                     type="text" 
                     id="search" 
                     name="search"
+                    min="3"
+                    max="10"
                     class="header-input"
                     placeholder="Rechercher une recette, un ingrédient..."
                 >
@@ -36,8 +38,9 @@
         <section class="recipes-section"></section>
     </main>
 
-    <script src="js/factories/sortBarFactory.js"></script>
-    <script src="js/factories/recipesFactory.js"></script>
+    <script src="js/utils/sortBar.js" type="module"></script>
+    <script src="js/utils/sortBarByTag.js"></script>
+    <script src="js/utils/displayRecipesCards.js"></script>
     <script src="js/index.js" type="module"></script>
   </body>
 </html>

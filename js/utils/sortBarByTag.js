@@ -1,4 +1,4 @@
-const createSortBar = (recipes) => {
+const createSortBarByTag = (recipes) => {
     const sortBarContainer = document.querySelector('.sort-bar-section');
 
     const container = document.createElement('div');
