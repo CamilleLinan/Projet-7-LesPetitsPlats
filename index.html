@@ -22,9 +22,14 @@
                     type="text" 
                     id="search" 
                     name="search"
+                    min="3"
+                    max="10"
                     class="header-input"
                     placeholder="Rechercher une recette, un ingrédient..."
                 >
+                <button class="header-input-clear-icon">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
                 <span class="header-input-icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
@@ -32,9 +37,13 @@
         </div>
     </header>
     <main>
+        <section class="sort-bar-section"></section>
         <section class="recipes-section"></section>
     </main>
-    <script src="js/factories/recipesFactory.js"></script>
+
+    <script src="js/utils/sortBar.js" type="module"></script>
+    <script src="js/utils/sortBarByTag.js"></script>
+    <script src="js/utils/displayRecipesCards.js"></script>
     <script src="js/index.js" type="module"></script>
   </body>
 </html>

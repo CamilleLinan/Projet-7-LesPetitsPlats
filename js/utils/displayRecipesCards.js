@@ -1,5 +1,6 @@
-const createRecipesCard = (recipes) => {
+const displayRecipesCards = (recipes) => {
     const recipesContainer = document.querySelector('.recipes-section');
+    recipesContainer.innerHTML = '';
 
     recipes.forEach((recipe) => {
         const recipeCard = document.createElement('article');

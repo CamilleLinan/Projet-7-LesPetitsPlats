@@ -47,6 +47,21 @@
 .header-input:focus {
   outline-color: #e4b02d;
 }
+.header-input-clear-icon {
+  display: none;
+  position: absolute;
+  top: 2.5em;
+  right: 2.5em;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  color: black;
+  opacity: 0.5;
+  transition: all 250ms ease-in-out;
+}
+.header-input-clear-icon:hover {
+  opacity: 1;
+}
 .header-input-icon {
   position: absolute;
   top: 1.75em;
@@ -68,12 +83,49 @@
   color: black;
 }
 
+.sort-bar-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+.sort-container {
+  display: flex;
+}
+.sort-container-number {
+  margin-right: 1em;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Anton", sans-serif;
+}
+.sort-button {
+  margin: 0 1em;
+  border: none;
+  background: white;
+  padding: 1.5em 1em;
+  border-radius: 1em;
+  width: 190px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+.sort-button i {
+  color: grey;
+  font-size: 16px;
+}
+
+.no-result {
+  display: flex;
+  text-align: center;
+  margin: auto;
+  padding: 5em 0;
+}
+
 .recipes-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  background-color: #EDEDED;
-  padding: 1em;
+  justify-content: space-between;
 }
 
 .recipe {
@@ -144,8 +196,17 @@ body h1, body h2 {
   font-family: "Anton", sans-serif;
 }
 
+main {
+  background-color: #EDEDED;
+  padding: 2em;
+}
+
 li {
   list-style-type: none;
+}
+
+button, a {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */
