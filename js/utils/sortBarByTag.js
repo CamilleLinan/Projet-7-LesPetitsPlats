@@ -21,6 +21,26 @@ const createSortBarByTag = (recipes) => {
     container.appendChild(ingredientsBtn);
     container.appendChild(devicesBtn);
     container.appendChild(utensilsBtn);
+
+    const recipesIngredients = [...new Set(
+        recipes.map(recipe => recipe.ingredients)
+          .flat()
+          .map(ingredient => ingredient.ingredient)
+    )];
+    console.log('Ingrédients: ', recipesIngredients);
+    
+    const recipesAppliances = [...new Set(
+        recipes.map(recipe => recipe.appliance)
+    )]
+    console.log('Appareils: ', recipesAppliances);
+    
+    const recipesUtensils = [...new Set(
+        recipes.map(recipe => recipe.ustensils)
+          .flat()
+          .filter(ustensil => ustensil !== undefined)
+          .map(ustensil => ustensil.charAt(0).toUpperCase() + ustensil.slice(1))
+    )];
+    console.log('Ustensiles: ', recipesUtensils); 
 }
 
 // Create container for number of recipes
