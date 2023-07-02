@@ -1,22 +1,38 @@
-const createSortBarByTag = (recipes) => {
-    const sortBarContainer = document.querySelector('.sort-bar-section');
+const sortBarContainer = document.querySelector('.sort-bar-section');
 
+// Create buttons for sort by tag
+const createSortBarByTag = (recipes) => {
     const container = document.createElement('div');
-    container.classList.add('sort-bar-container');
+    container.classList.add('sort-container');
     sortBarContainer.appendChild(container);
 
-    const sortBtn1 = document.createElement('button');
-    sortBtn1.innerHTML = 'Ingrédients <i class="fa-solid fa-chevron-down"></i>';
-    sortBtn1.classList.add('sort-bar-button');
-    container.appendChild(sortBtn1);
+    const createSortBtn = (text, btnClass) => {
+        const button = document.createElement('button');
+        button.classList.add('sort-button', btnClass);
+        button.innerHTML = `${text} <i class="fa-solid fa-chevron-down"></i>`;
 
-    const sortBtn2 = document.createElement('button');
-    sortBtn2.innerHTML = 'Appareils <i class="fa-solid fa-chevron-down"></i>';
-    sortBtn2.classList.add('sort-bar-button');
-    container.appendChild(sortBtn2);
+        return button;
+    }
 
-    const sortBtn3 = document.createElement('button');
-    sortBtn3.innerHTML = 'Ustensiles <i class="fa-solid fa-chevron-down"></i>';
-    sortBtn3.classList.add('sort-bar-button');
-    container.appendChild(sortBtn3);
+    const ingredientsBtn = createSortBtn('Ingrédients', 'sort-button-ingredients');
+    const devicesBtn = createSortBtn('Appareils', 'sort-button-devices');
+    const utensilsBtn = createSortBtn('Ustensiles', 'sort-button-utensils');
+
+    container.appendChild(ingredientsBtn);
+    container.appendChild(devicesBtn);
+    container.appendChild(utensilsBtn);
+}
+
+// Create container for number of recipes
+const nbrContainer = document.createElement('div');
+nbrContainer.classList.add('sort-container-number');
+const displayNbrRecipes = (recipes) => {
+    let result;
+    if (recipes.length > 1) {
+        result = 'recettes'
+    } else {
+        result = 'recette'
+    }
+    nbrContainer.innerHTML = `<p>${recipes.length} ${result}</p>`;
+    sortBarContainer.appendChild(nbrContainer);
 }

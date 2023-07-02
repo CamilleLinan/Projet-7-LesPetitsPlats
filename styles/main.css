@@ -83,11 +83,23 @@
   color: black;
 }
 
-.sort-bar-container {
+.sort-bar-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+.sort-container {
   display: flex;
 }
-.sort-bar-button {
-  margin: 0 1em 2em 1em;
+.sort-container-number {
+  margin-right: 1em;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Anton", sans-serif;
+}
+.sort-button {
+  margin: 0 1em;
   border: none;
   background: white;
   padding: 1.5em 1em;
@@ -98,7 +110,7 @@
   align-items: center;
   font-size: 15px;
 }
-.sort-bar-button i {
+.sort-button i {
   color: grey;
   font-size: 16px;
 }

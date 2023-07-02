@@ -6,21 +6,24 @@ const searchBar = document.getElementById('search');
 
 searchBar.addEventListener('input', (event) => {
   clearBtn.style.display = 'block';
-  const searchValue = event.target.value.toLowerCase();
+  const searchValue = event.target.value.toLowerCase().trim();
 
-  setTimeout(() => {
-    handleSearch(searchValue);
-  }, 1000);
+  if (searchValue.length >= 3) {
+    setTimeout(() => {
+      handleSearch(searchValue);
+    }, 300);
+  }
 
   if (searchValue === '') {
     clearBtn.style.display = 'none';
+    displayRecipesCards(recipes);
+    displayNbrRecipes(recipes);
   }
 });
 
 clearBtn.addEventListener('click', () => {
   searchBar.value = '';
   clearBtn.style.display = 'none';
-  displayRecipesCards(recipes);
 });
 
 const handleSearch = (searchValue) => {
@@ -28,14 +31,10 @@ const handleSearch = (searchValue) => {
     const recipeName = recipe.name.toLowerCase();
     const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
     const recipeDescription = recipe.description.toLowerCase();
-    const recipeAppliance = recipe.appliance.toLowerCase();
-    const recipeUstensils = recipe.ustensils.map(ustensil => ustensil.toLowerCase());
     return (
       recipeName.includes(searchValue) ||
       recipeIngredients.includes(searchValue) ||
-      recipeDescription.includes(searchValue) ||
-      recipeAppliance.includes(searchValue) ||
-      recipeUstensils.includes(searchValue)
+      recipeDescription.includes(searchValue)
     );
   });
 
@@ -46,4 +45,6 @@ const handleSearch = (searchValue) => {
     recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}" vous pouvez chercher «
     tarte aux pommes », « poisson », etc.</p>`
   }
+
+  displayNbrRecipes(searchResults);
 }

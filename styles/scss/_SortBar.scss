@@ -1,10 +1,24 @@
-.sort-bar {
+.sort {
+    &-bar-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5em;
+    }
+
     &-container {
         display: flex;
+        
+        &-number {
+            margin-right: 1em;
+            font-weight: bold;
+            font-size: 20px;
+            font-family: 'Anton', sans-serif;
+        }
     }
     
     &-button {
-        margin: 0 1em 2em 1em;
+        margin: 0 1em;
         border: none;
         background: white;
         padding: 1.5em 1em;
