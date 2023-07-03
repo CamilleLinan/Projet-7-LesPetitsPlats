@@ -42,7 +42,7 @@ const handleSearch = (searchValue) => {
     displayRecipesCards(searchResults);
   } else {
     displayRecipesCards([]);
-    recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}" vous pouvez chercher «
+    recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}". Vous pouvez chercher «
     tarte aux pommes », « poisson », etc.</p>`
   }
 
