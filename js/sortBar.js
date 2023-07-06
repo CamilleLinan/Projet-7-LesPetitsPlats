@@ -1,6 +1,6 @@
 import { recipes } from './recipes.js';
 
-const recipesContainer = document.querySelector('.recipes-section');
+// const recipesContainer = document.querySelector('.recipes-section');
 const clearBtn = document.querySelector('.header-input-clear-icon');
 const searchBar = document.getElementById('search');
 
@@ -10,7 +10,7 @@ searchBar.addEventListener('input', (event) => {
 
   if (searchValue.length >= 3) {
     setTimeout(() => {
-      handleSearch(searchValue);
+      handleSearchRecipes(recipes, searchValue);
     }, 300);
   }
 
@@ -26,25 +26,25 @@ clearBtn.addEventListener('click', () => {
   clearBtn.style.display = 'none';
 });
 
-const handleSearch = (searchValue) => {
-  const searchResults = recipes.filter(recipe => {
-    const recipeName = recipe.name.toLowerCase();
-    const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
-    const recipeDescription = recipe.description.toLowerCase();
-    return (
-      recipeName.includes(searchValue) ||
-      recipeIngredients.includes(searchValue) ||
-      recipeDescription.includes(searchValue)
-    );
-  });
+// const handleSearch = (searchValue) => {
+//   const searchResults = recipes.filter(recipe => {
+//     const recipeName = recipe.name.toLowerCase();
+//     const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
+//     const recipeDescription = recipe.description.toLowerCase();
+//     return (
+//       recipeName.includes(searchValue) ||
+//       recipeIngredients.includes(searchValue) ||
+//       recipeDescription.includes(searchValue)
+//     );
+//   });
 
-  if (searchResults.length > 0) {
-    displayRecipesCards(searchResults);
-  } else {
-    displayRecipesCards([]);
-    recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}". Vous pouvez chercher «
-    tarte aux pommes », « poisson », etc.</p>`
-  }
+//   if (searchResults.length > 0) {
+//     displayRecipesCards(searchResults);
+//   } else {
+//     displayRecipesCards([]);
+//     recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}". Vous pouvez chercher «
+//     tarte aux pommes », « poisson », etc.</p>`
+//   }
 
-  displayNbrRecipes(searchResults);
-}
+//   displayNbrRecipes(searchResults);
+// }
