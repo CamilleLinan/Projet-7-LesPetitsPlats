@@ -86,22 +86,22 @@ const createSortBarByTag = (recipes) => {
           .map(ustensil => ustensil.charAt(0).toUpperCase() + ustensil.slice(1))
     )];
     
-    const createTagList = (recipesTags, tagList) => {
+    const createTagList = (recipesTags, tagList, classItem) => {
         tagList.innerHTML = '';
-        
+
         recipesTags.forEach((tag, index) => {
             const li = document.createElement('li');
             const id = `${tag}_${index}`;
             li.setAttribute('id', id);
-            li.classList.add('sort-list-item');
+            li.classList.add('sort-list-item', `${classItem}`);
             li.textContent = tag;
             tagList.appendChild(li);
         })
     }
 
-    createTagList(recipesIngredients, ingredientsList);
-    createTagList(recipesAppliances, appliancesList);
-    createTagList(recipesUtensils, utensilsList);
+    createTagList(recipesIngredients, ingredientsList, 'ingredient');
+    createTagList(recipesAppliances, appliancesList, 'appliance');
+    createTagList(recipesUtensils, utensilsList, 'utensil');
 
     const selectedItemsList = document.querySelector('.selected-items-list');
     const addEventForTagList = (tagList) => {
@@ -118,10 +118,13 @@ const createSortBarByTag = (recipes) => {
                     selectedItem.removeChild(button);
                     selectedItemsList.removeChild(selectedItem);
                     tagList.appendChild(selectedItem);
+                    handleSearchRecipes(recipes, selectedItem);
+                    // displayNbrRecipes(recipes);
                 })
                 
                 selectedItem.appendChild(button);
                 selectedItemsList.appendChild(selectedItem);
+                console.log(selectedItem)
 
                 handleSearchRecipes(recipes, selectedItem);
             }
@@ -230,32 +233,7 @@ const createSortBarByTag = (recipes) => {
     addEventForInput(clearBtnInputIngredients, inputIngredients, ingredientsList);
     addEventForInput(clearBtnInputAppliances, inputAppliances, appliancesList);
     addEventForInput(clearBtnInputUtensils, inputUtensils, utensilsList);
-
-    // const recipesContainer = document.querySelector('.recipes-section');
-    // const handleSearchRecipes = (selectedItem) => {
-    //     const item = selectedItem.textContent.toLowerCase()
-    //     const searchResults = recipes.filter(recipe => {
-    //         const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
-    //         const recipeAppliances = recipes.map(recipe => recipe.appliance.toLowerCase())
-    //         const recipeUtensils = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => ustensil.toLowerCase());
-    //         return (
-    //           recipeIngredients.includes(item) ||
-    //           recipeAppliances.includes(item) ||
-    //           recipeUtensils.includes(item)
-    //         );
-    //     });
-        
-    //     if (searchResults.length > 0) {
-    //         displayRecipesCards(searchResults);
-    //     } else {
-    //         displayRecipesCards([]);
-    //         recipesContainer.innerHTML = `<p class="no-result">No recipes</p>`
-    //     }
-        
-    //     displayNbrRecipes(searchResults);
-    // }
 }
-// Si un item est selectionné afficher les recettes associées. Dans les listes ne doivent être que les éléments de ces dernières.
 
 // Create container for number of recipes
 const displayNbrRecipes = (recipes) => {

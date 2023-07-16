@@ -16,8 +16,8 @@ searchBar.addEventListener('input', (event) => {
 
   if (searchValue === '') {
     clearBtn.style.display = 'none';
-    displayRecipesCards(recipes);
-    displayNbrRecipes(recipes);
+    // displayRecipesCards(recipes);
+    // displayNbrRecipes(recipes);
   }
 });
 
