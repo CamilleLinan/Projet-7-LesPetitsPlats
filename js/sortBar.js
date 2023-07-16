@@ -16,8 +16,7 @@ searchBar.addEventListener('input', (event) => {
 
   if (searchValue === '') {
     clearBtn.style.display = 'none';
-    // displayRecipesCards(recipes);
-    // displayNbrRecipes(recipes);
+    handleSearchRecipes(recipes, '');
   }
 });
 
@@ -25,26 +24,3 @@ clearBtn.addEventListener('click', () => {
   searchBar.value = '';
   clearBtn.style.display = 'none';
 });
-
-// const handleSearch = (searchValue) => {
-//   const searchResults = recipes.filter(recipe => {
-//     const recipeName = recipe.name.toLowerCase();
-//     const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
-//     const recipeDescription = recipe.description.toLowerCase();
-//     return (
-//       recipeName.includes(searchValue) ||
-//       recipeIngredients.includes(searchValue) ||
-//       recipeDescription.includes(searchValue)
-//     );
-//   });
-
-//   if (searchResults.length > 0) {
-//     displayRecipesCards(searchResults);
-//   } else {
-//     displayRecipesCards([]);
-//     recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}". Vous pouvez chercher «
-//     tarte aux pommes », « poisson », etc.</p>`
-//   }
-
-//   displayNbrRecipes(searchResults);
-// }
