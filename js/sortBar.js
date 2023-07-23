@@ -22,5 +22,6 @@ searchBar.addEventListener('input', (event) => {
 
 clearBtn.addEventListener('click', () => {
   searchBar.value = '';
+  handleSearchRecipes(recipes, '');
   clearBtn.style.display = 'none';
 });

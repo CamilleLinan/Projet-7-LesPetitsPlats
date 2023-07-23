@@ -119,12 +119,10 @@ const createSortBarByTag = (recipes) => {
                     selectedItemsList.removeChild(selectedItem);
                     tagList.appendChild(selectedItem);
                     handleSearchRecipes(recipes, selectedItem);
-                    // displayNbrRecipes(recipes);
                 })
                 
                 selectedItem.appendChild(button);
                 selectedItemsList.appendChild(selectedItem);
-                console.log(selectedItem)
 
                 handleSearchRecipes(recipes, selectedItem);
             }
