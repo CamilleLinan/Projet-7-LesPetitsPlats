@@ -22,8 +22,8 @@
                     type="text" 
                     id="search" 
                     name="search"
-                    min="3"
-                    max="10"
+                    minlength="3"
+                    maxlength="10"
                     class="header-input"
                     placeholder="Rechercher une recette, un ingrédient..."
                 >
@@ -37,11 +37,11 @@
         </div>
     </header>
     <main>
-        <section class="sort-section"></section>
-        <section class="selected-items">
+        <div class="sort-section"></div>
+        <div class="selected-items">
             <ul class="selected-items-list"></ul>
-        </section>
-        <section class="recipes-section"></section>
+        </div>
+        <div class="recipes-section"></div>
     </main>
 
     <script src="js/sortBar.js" type="module"></script>

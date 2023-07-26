@@ -1,6 +1,5 @@
 import { recipes } from './recipes.js';
 
-// const recipesContainer = document.querySelector('.recipes-section');
 const clearBtn = document.querySelector('.header-input-clear-icon');
 const searchBar = document.getElementById('search');
 

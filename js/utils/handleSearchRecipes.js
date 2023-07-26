@@ -55,9 +55,6 @@ const handleSearchRecipes = (recipes, selectedItem) => {
         ));
     });
 
-    console.log('selectedFilters', selectedFilters);
-    console.log('searchValue', searchValue);
-
     // Update lists
     let filteredIngredientsList = [];
     let filteredAppliancesList = [];

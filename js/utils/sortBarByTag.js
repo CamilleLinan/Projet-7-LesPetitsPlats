@@ -13,7 +13,7 @@ const createSortBarByTag = (recipes) => {
                             type="text"
                             id="input-ingredients" 
                             class="dropdown-menu-input" 
-                        />
+                        >
                         <button id="button-clear-ingredients" class="dropdown-menu-input-clear">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
@@ -31,7 +31,7 @@ const createSortBarByTag = (recipes) => {
                             type="text"
                             id="input-appliances"  
                             class="dropdown-menu-input" 
-                        />
+                        >
                         <button id="button-clear-appliances" class="dropdown-menu-input-clear">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
@@ -49,7 +49,7 @@ const createSortBarByTag = (recipes) => {
                             type="text"
                             id="input-utensils" 
                             class="dropdown-menu-input" 
-                        />
+                        >
                         <button id="button-clear-utensils" class="dropdown-menu-input-clear">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
@@ -170,12 +170,13 @@ const createSortBarByTag = (recipes) => {
     };
 
     document.addEventListener('click', (event) => {
-        const isClickedInsideDropdownMenu = btnIngredients.contains(event.target)
-          || btnAppliances.contains(event.target)
-          || btnUtensils.contains(event.target)
-          || dropdownMenuIngredients.contains(event.target)
-          || dropdownMenuAppliances.contains(event.target)
-          || dropdownMenuUtensils.contains(event.target);
+        const isClickedInsideDropdownMenu = 
+            btnIngredients.contains(event.target) || 
+            btnAppliances.contains(event.target) || 
+            btnUtensils.contains(event.target) ||
+            dropdownMenuIngredients.contains(event.target) ||
+            dropdownMenuAppliances.contains(event.target) ||
+            dropdownMenuUtensils.contains(event.target);
       
         if (!isClickedInsideDropdownMenu) {
           closeDropdownMenu(dropdownMenuIngredients, iconBtnIngredients);
