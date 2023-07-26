@@ -1,5 +1,5 @@
 .sort {
-    &-bar-section {
+    &-section {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -8,6 +8,14 @@
 
     &-container {
         display: flex;
+
+        &-button {
+            position: relative;
+            width: 220px;
+            margin: 0 1em;
+            box-shadow: 0 0 10px rgba(88, 88, 88, 0.2);
+            border-radius: 1em;
+        }
         
         &-number {
             margin-right: 1em;
@@ -18,21 +26,116 @@
     }
     
     &-button {
-        margin: 0 1em;
         border: none;
         background: white;
         padding: 1.5em 1em;
         border-radius: 1em;
-        width: 190px;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 15px;
+        font-size: 16px;
         & i {
             color: $secondary-clr;
             font-size: 16px;
         }
     }
+
+    &-list-item.selected {
+        background-color: $primary-clr;
+        margin: 0 0.5em 1em 1em;
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+
+        & button {
+            background-color: transparent;
+            border: none;
+            margin: 0 0 0 1em;
+            padding: 0;
+        }
+    }
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin-top: -1em;
+    width: 100%;
+    max-height: 418px;
+    box-sizing: border-box;
+    border-radius: 0 0 1em 1em;
+    overflow-y: scroll;
+    padding-bottom: 1em;
+    z-index: 100;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    &::-webkit-scrollbar {
+        width: 0em;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+    &.show {
+        display: block;
+    }
+    &-container-input {
+        position: relative;
+        padding: 0.5em 1em;
+    }
+
+    &-input {
+        width: 100%;
+        margin-bottom: 0.3em;
+        padding: 0 0.5em;
+        box-sizing: border-box;
+        height: 2.1em;
+        border: 1px solid black;
+        border-radius: 0.3em;
+        font-size: 16px;
+        opacity: 0.3;
+        &:focus {
+            outline-color: $primary-clr;
+            opacity: 1;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        &-clear {
+            display: none;
+            position: absolute;
+            top: 0.95em;
+            right: 2.5em;
+            background: none;
+            border: none;
+            font-size: 16px;
+            opacity: 0.3;
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &-icon {
+            position: absolute;
+            top: 1.05em;
+            right: 1.5em;
+            opacity: 0.3;
+        }
+    }
+
+    & li {
+        cursor: pointer;
+        padding: 0.5em 1em;
+        &:hover {
+            background-color: $primary-clr;
+        }
+    }
+}
+
+.selected-items-list {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .no-result {
