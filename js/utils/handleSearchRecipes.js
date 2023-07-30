@@ -15,44 +15,52 @@ const updateTagList = (filteredTags, tagList) => {
 
 let selectedFilters = [];
 let searchValue = '';
+let searchValueNoDiacritics = '';
 
 const handleSearchRecipes = (recipes, selectedItem) => {
     const ingredientsList = document.querySelector('.dropdown-menu-ingredients .dropdown-list');
     const appliancesList = document.querySelector('.dropdown-menu-appliances .dropdown-list');
     const utensilsList = document.querySelector('.dropdown-menu-utensils .dropdown-list');
 
+    const removeDiacritics = (str) => {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+
     // Add new searchValue or add value in filters
     if (!selectedItem.textContent) {
         searchValue = selectedItem;
+        searchValueNoDiacritics = removeDiacritics(searchValue);
     } else {
         let selectedValue = selectedItem.textContent.toLowerCase();
-        if (selectedFilters.includes(selectedValue)) {
-            const index = selectedFilters.indexOf(searchValue);
+        let selectedValueNoDiacritics = removeDiacritics(selectedValue);
+        if (selectedFilters.includes(selectedValueNoDiacritics)) {
+            const index = selectedFilters.indexOf(selectedValueNoDiacritics);
             selectedFilters.splice(index, 1);
         } else {
-            selectedFilters = [...selectedFilters, selectedValue];
+            selectedFilters = [...selectedFilters, selectedValueNoDiacritics];
         }
     }
 
     // Filter recipes
     const searchResults = recipes.filter(recipe => {
-        const recipeName = recipe.name.toLowerCase();
-        const recipeDescription = recipe.description.toLowerCase();
-        const recipeIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient.toLowerCase()).join(' ');
-        const recipeAppliances = recipe.appliance.toLowerCase()
-        const recipeUtensils = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => ustensil.toLowerCase());
+    const recipeNameNoDiacritics = removeDiacritics(recipe.name.toLowerCase().trim());
+    const recipeDescriptionNoDiacritics = removeDiacritics(recipe.description.toLowerCase().trim());
+    const recipeIngredientsNoDiacritics = recipe.ingredients.map(ingredient => removeDiacritics(ingredient.ingredient.toLowerCase())).join(' ');
+    const recipeAppliancesNoDiacritics = removeDiacritics(recipe.appliance.toLowerCase());
+    const recipeUtensilsNoDiacritics = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => removeDiacritics(ustensil.toLowerCase()));
 
-        return (
-            selectedFilters.every(filter => (
-                recipeIngredients.includes(filter) ||
-                recipeAppliances.includes(filter) ||
-                recipeUtensils.includes(filter)
-            )) &&
-            (searchValue === '' ||
-                recipeName.includes(searchValue) ||
-                recipeDescription.includes(searchValue) ||
-                recipeIngredients.includes(searchValue)
-        ));
+    return (
+        selectedFilters.every(filter => (
+        recipeIngredientsNoDiacritics.includes(removeDiacritics(filter)) ||
+        recipeAppliancesNoDiacritics.includes(removeDiacritics(filter)) ||
+        recipeUtensilsNoDiacritics.includes(removeDiacritics(filter))
+        )) &&
+        (searchValue === '' ||
+        recipeNameNoDiacritics.includes(searchValueNoDiacritics) ||
+        recipeDescriptionNoDiacritics.includes(searchValueNoDiacritics) ||
+        recipeIngredientsNoDiacritics.includes(searchValueNoDiacritics)
+        )
+    );
     });
 
     // Update lists
