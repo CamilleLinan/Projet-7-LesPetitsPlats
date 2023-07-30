@@ -199,11 +199,7 @@ const createSortBarByTag = (recipes) => {
             clearBtn.style.display = 'block';
             const searchValue = event.target.value.toLowerCase().trim();
     
-            if (searchValue.length >= 3) {
-                setTimeout(() => {
-                    handleSearch(searchValue, list);
-                }, 300);
-            }
+            handleSearch(searchValue, list);
 
             if (searchValue === '') {
                 clearBtn.style.display = 'none';
@@ -217,15 +213,31 @@ const createSortBarByTag = (recipes) => {
             handleSearch('', list);
         });
 
+        const errorMessage = document.createElement('li');
+        errorMessage.textContent = 'Aucun élément trouvé.';
+        errorMessage.style.pointerEvents = 'none';
+        errorMessage.style.display = 'none';
+        list.appendChild(errorMessage);
+
         const handleSearch = (searchValue, itemList) => {
-            itemList.querySelectorAll('li').forEach((item) => {
+            const items = itemList.querySelectorAll('li');
+        
+            let found = false;
+            items.forEach((item) => {
                 const text = item.textContent.toLowerCase();
                 if (text.includes(searchValue)) {
                     item.style.display = 'block';
+                    found = true
                 } else {
                     item.style.display = 'none';
                 }
             });
+
+            if (!found) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
         };
     }
 
