@@ -15,7 +15,6 @@ const updateTagList = (filteredTags, tagList) => {
 
 let selectedFilters = [];
 let searchValue = '';
-let searchValueNoDiacritics = '';
 
 const handleSearchRecipes = (recipes, selectedItem) => {
     const ingredientsList = document.querySelector('.dropdown-menu-ingredients .dropdown-list');
@@ -28,16 +27,14 @@ const handleSearchRecipes = (recipes, selectedItem) => {
 
     // Add new searchValue or add value in filters
     if (!selectedItem.textContent) {
-        searchValue = selectedItem;
-        searchValueNoDiacritics = removeDiacritics(searchValue);
+        searchValue = removeDiacritics(selectedItem);
     } else {
-        let selectedValue = selectedItem.textContent.toLowerCase();
-        let selectedValueNoDiacritics = removeDiacritics(selectedValue);
-        if (selectedFilters.includes(selectedValueNoDiacritics)) {
-            const index = selectedFilters.indexOf(selectedValueNoDiacritics);
+        let selectedValue = removeDiacritics(selectedItem.textContent.toLowerCase());
+        if (selectedFilters.includes(selectedValue)) {
+            const index = selectedFilters.indexOf(selectedValue);
             selectedFilters.splice(index, 1);
         } else {
-            selectedFilters = [...selectedFilters, selectedValueNoDiacritics];
+            selectedFilters = [...selectedFilters, selectedValue];
         }
     }
 
@@ -49,18 +46,18 @@ const handleSearchRecipes = (recipes, selectedItem) => {
     const recipeAppliancesNoDiacritics = removeDiacritics(recipe.appliance.toLowerCase());
     const recipeUtensilsNoDiacritics = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => removeDiacritics(ustensil.toLowerCase()));
 
-    return (
-        selectedFilters.every(filter => (
-        recipeIngredientsNoDiacritics.includes(removeDiacritics(filter)) ||
-        recipeAppliancesNoDiacritics.includes(removeDiacritics(filter)) ||
-        recipeUtensilsNoDiacritics.includes(removeDiacritics(filter))
-        )) &&
-        (searchValue === '' ||
-        recipeNameNoDiacritics.includes(searchValueNoDiacritics) ||
-        recipeDescriptionNoDiacritics.includes(searchValueNoDiacritics) ||
-        recipeIngredientsNoDiacritics.includes(searchValueNoDiacritics)
-        )
-    );
+        return (
+            selectedFilters.every(filter => (
+                recipeIngredientsNoDiacritics.includes(removeDiacritics(filter)) ||
+                recipeAppliancesNoDiacritics.includes(removeDiacritics(filter)) ||
+                recipeUtensilsNoDiacritics.includes(removeDiacritics(filter))
+            )) &&
+            (searchValue === '' ||
+                recipeNameNoDiacritics.includes(searchValue) ||
+                recipeDescriptionNoDiacritics.includes(searchValue) ||
+                recipeIngredientsNoDiacritics.includes(searchValue)
+            )
+        );
     });
 
     // Update lists
