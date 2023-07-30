@@ -40,22 +40,22 @@ const handleSearchRecipes = (recipes, selectedItem) => {
 
     // Filter recipes
     const searchResults = recipes.filter(recipe => {
-    const recipeNameNoDiacritics = removeDiacritics(recipe.name.toLowerCase().trim());
-    const recipeDescriptionNoDiacritics = removeDiacritics(recipe.description.toLowerCase().trim());
-    const recipeIngredientsNoDiacritics = recipe.ingredients.map(ingredient => removeDiacritics(ingredient.ingredient.toLowerCase())).join(' ');
-    const recipeAppliancesNoDiacritics = removeDiacritics(recipe.appliance.toLowerCase());
-    const recipeUtensilsNoDiacritics = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => removeDiacritics(ustensil.toLowerCase()));
+        const recipeName = removeDiacritics(recipe.name.toLowerCase().trim());
+        const recipeDescription = removeDiacritics(recipe.description.toLowerCase().trim());
+        const recipeIngredients = recipe.ingredients.map(ingredient => removeDiacritics(ingredient.ingredient.toLowerCase())).join(' ');
+        const recipeAppliances = removeDiacritics(recipe.appliance.toLowerCase());
+        const recipeUtensils = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => removeDiacritics(ustensil.toLowerCase()));
 
         return (
             selectedFilters.every(filter => (
-                recipeIngredientsNoDiacritics.includes(removeDiacritics(filter)) ||
-                recipeAppliancesNoDiacritics.includes(removeDiacritics(filter)) ||
-                recipeUtensilsNoDiacritics.includes(removeDiacritics(filter))
+                recipeIngredients.includes(removeDiacritics(filter)) ||
+                recipeAppliances.includes(removeDiacritics(filter)) ||
+                recipeUtensils.includes(removeDiacritics(filter))
             )) &&
             (searchValue === '' ||
-                recipeNameNoDiacritics.includes(searchValue) ||
-                recipeDescriptionNoDiacritics.includes(searchValue) ||
-                recipeIngredientsNoDiacritics.includes(searchValue)
+                recipeName.includes(searchValue) ||
+                recipeDescription.includes(searchValue) ||
+                recipeIngredients.includes(searchValue)
             )
         );
     });
