@@ -39,14 +39,15 @@ const handleSearchRecipes = (recipes, selectedItem) => {
     }
 
     // Filter recipes
-    const searchResults = recipes.filter(recipe => {
-    const recipeNameNoDiacritics = removeDiacritics(recipe.name.toLowerCase().trim());
-    const recipeDescriptionNoDiacritics = removeDiacritics(recipe.description.toLowerCase().trim());
-    const recipeIngredientsNoDiacritics = recipe.ingredients.map(ingredient => removeDiacritics(ingredient.ingredient.toLowerCase())).join(' ');
-    const recipeAppliancesNoDiacritics = removeDiacritics(recipe.appliance.toLowerCase());
-    const recipeUtensilsNoDiacritics = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => removeDiacritics(ustensil.toLowerCase()));
+    const searchResults = [];
+    for (const recipe of recipes) {
+        const recipeNameNoDiacritics = removeDiacritics(recipe.name.toLowerCase().trim());
+        const recipeDescriptionNoDiacritics = removeDiacritics(recipe.description.toLowerCase().trim());
+        const recipeIngredientsNoDiacritics = recipe.ingredients.map(ingredient => removeDiacritics(ingredient.ingredient.toLowerCase())).join(' ');
+        const recipeAppliancesNoDiacritics = removeDiacritics(recipe.appliance.toLowerCase());
+        const recipeUtensilsNoDiacritics = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => removeDiacritics(ustensil.toLowerCase()));
 
-        return (
+        const match = (
             selectedFilters.every(filter => (
                 recipeIngredientsNoDiacritics.includes(removeDiacritics(filter)) ||
                 recipeAppliancesNoDiacritics.includes(removeDiacritics(filter)) ||
@@ -58,7 +59,11 @@ const handleSearchRecipes = (recipes, selectedItem) => {
                 recipeIngredientsNoDiacritics.includes(searchValue)
             )
         );
-    });
+
+        if (match) {
+            searchResults.push(recipe);
+        }
+    }
 
     // Update lists
     let filteredIngredientsList = [];
