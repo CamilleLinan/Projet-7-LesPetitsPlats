@@ -40,27 +40,35 @@ const handleSearchRecipes = (recipes, selectedItem) => {
 
     // Filter recipes
     const searchResults = [];
-    for (const recipe of recipes) {
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
         const recipeName = removeDiacritics(recipe.name.toLowerCase().trim());
         const recipeDescription = removeDiacritics(recipe.description.toLowerCase().trim());
         const recipeIngredients = recipe.ingredients.map(ingredient => removeDiacritics(ingredient.ingredient.toLowerCase())).join(' ');
         const recipeAppliances = removeDiacritics(recipe.appliance.toLowerCase());
         const recipeUtensils = recipe.ustensils.filter(ustensil => ustensil !== undefined).map(ustensil => removeDiacritics(ustensil.toLowerCase()));
 
-        const match = (
-            selectedFilters.every(filter => (
-                recipeIngredients.includes(removeDiacritics(filter)) ||
-                recipeAppliances.includes(removeDiacritics(filter)) ||
-                recipeUtensils.includes(removeDiacritics(filter))
-            )) &&
-            (searchValue === '' ||
-                recipeName.includes(searchValue) ||
-                recipeDescription.includes(searchValue) ||
-                recipeIngredients.includes(searchValue)
-            )
+        let recipeMatchesFilters = true;
+        for (let j = 0; j < selectedFilters.length; j++) {
+            const filter = removeDiacritics(selectedFilters[j]);
+            if (
+                !recipeIngredients.includes(filter) &&
+                !recipeAppliances.includes(filter) &&
+                !recipeUtensils.includes(filter)
+            ) {
+                recipeMatchesFilters = false;
+                break;
+            }
+        }
+
+        const recipeMatchesSearchValue = (
+            searchValue === '' ||
+            recipeName.includes(searchValue) ||
+            recipeDescription.includes(searchValue) ||
+            recipeIngredients.includes(searchValue)
         );
 
-        if (match) {
+        if (recipeMatchesFilters && recipeMatchesSearchValue) {
             searchResults.push(recipe);
         }
     }
