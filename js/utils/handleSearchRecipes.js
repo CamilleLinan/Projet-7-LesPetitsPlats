@@ -105,8 +105,13 @@ const handleSearchRecipes = (recipes, selectedItem) => {
         displayRecipesCards(searchResults);
     } else {
         displayRecipesCards([]);
-        recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}, ${selectedFilters}". Vous pouvez chercher «
-        tarte aux pommes », « poisson », etc.</p>`
+        if (searchValue && selectedFilters.length > 0) {
+            recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}, ${selectedFilters}". Vous pouvez chercher «
+            tarte aux pommes », « poisson », etc.</p>`;
+        } else {
+            recipesContainer.innerHTML = `<p class="no-result">Aucune recette ne contient "${searchValue}". Vous pouvez chercher «
+            tarte aux pommes », « poisson », etc.</p>`;
+        }
     }
 
     displayNbrRecipes(searchResults);
